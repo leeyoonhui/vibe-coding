@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+/* 디자인 토큰: 임재정 포트폴리오.html Style Guide (Figma · Portfolio (Community)) */
+@theme {
+  --color-canvas: #171717;
+  --color-surface: #212121;
+  --color-photo: #1e1d1d;
+  --color-edge: #333333;
+  --color-line: #4f4f4f;
+  --color-muted: #828282;
+  --color-subtle: #a0a0a0;
+  --color-soft: #bdbdbd;
+  --color-fg: #f2f2f2;
+  --color-accent: #27ae60;
+
+  --font-sans: var(--font-dm-sans), var(--font-noto-sans-kr), sans-serif;
+}
+
+/* 콘텐츠 최대폭 1280px, 좌우 여백 20px(모바일) ~ 80px(데스크톱) */
+@utility container-page {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: clamp(20px, 5vw, 80px);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 64px;
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: 88px;
+  }
+}
+
+body {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  background: var(--color-canvas);
+  color: #ffffff;
+}
+
+/* 스크롤 등장 애니메이션. JS 가 없으면 숨기지 않는다. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
